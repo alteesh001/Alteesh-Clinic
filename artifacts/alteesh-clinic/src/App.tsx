@@ -5,7 +5,7 @@ import { CalendarDays, Check, ChevronLeft, CircleAlert, ClipboardList, Clock3, D
 import { Toaster } from '@/components/ui/toaster';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { ErrorBoundary } from '@/components/error-boundary';
-import { Activity, Appointment, DBData, DentalChartEntry, Doctor, InventoryItem, Patient, Radiograph, Role, Settings as ClinicSettings, Status, TreatmentPlan, clearSeeds, createAppointment, createEntity, deleteRecord, exportBackup, id, importBackup, initializeSeed, loadData, pullSync, pushSync, registerSyncClinic, requestPersistentStorage, save, saveSettings, today } from '@/lib/repository';
+import { Activity, Appointment, AuditEvent, ClinicChair, DBData, DentalChartEntry, Doctor, InventoryItem, Patient, Radiograph, Role, Settings as ClinicSettings, Status, TreatmentPlan, clearSeeds, createAppointment, createEntity, deleteRecord, exportBackup, id, importBackup, initializeSeed, loadData, pullSync, pushSync, recordAudit, registerSyncClinic, requestPersistentStorage, save, saveSettings, today } from '@/lib/repository';
 import '@/index.css';
 import logoPath from '@assets/5_044804_1790227591911.png';
 
