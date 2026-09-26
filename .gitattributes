@@ -1,0 +1,5 @@
+artifacts/alteesh-clinic/release/@workspacealteesh-clinic-0.0.0-x64.nsis.7z filter=lfs diff=lfs merge=lfs -text
+artifacts/alteesh-clinic/release/linux-unpacked/@workspacealteesh-clinic filter=lfs diff=lfs merge=lfs -text
+artifacts/alteesh-clinic/release/linux-unpacked/resources/app.asar filter=lfs diff=lfs merge=lfs -text
+artifacts/alteesh-clinic/release/win-unpacked/AlteeshClinic.exe filter=lfs diff=lfs merge=lfs -text
+artifacts/alteesh-clinic/release/win-unpacked/resources/app.asar filter=lfs diff=lfs merge=lfs -text

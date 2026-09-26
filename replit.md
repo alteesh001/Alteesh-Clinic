@@ -1,10 +1,14 @@
-# [Project name]
+# Alteesh Clinic
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+تطبيق عربي لإدارة عيادة أسنان يعمل أوفلاين بالكامل ويحفظ بيانات العيادة على الجهاز.
 
 ## Run & Operate
 
 - `pnpm --filter @workspace/api-server run dev` — run the API server (port 5000)
+- `pnpm --filter @workspace/alteesh-clinic run dev` — run the web app
+- `pnpm --filter @workspace/alteesh-clinic run typecheck` — typecheck the clinic app
+- `pnpm --filter @workspace/alteesh-clinic run android:sync` — build and sync Capacitor Android
+- `pnpm --filter @workspace/alteesh-clinic run desktop:build` — build the Electron desktop package
 - `pnpm run typecheck` — full typecheck across all packages
 - `pnpm run build` — typecheck + build all packages
 - `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from the OpenAPI spec
@@ -19,18 +23,28 @@ _Replace the heading above with the project's name, and this line with one sente
 - Validation: Zod (`zod/v4`), `drizzle-zod`
 - API codegen: Orval (from OpenAPI spec)
 - Build: esbuild (CJS bundle)
+- Clinic app: React + Vite + TypeScript + Wouter + Dexie + Capacitor + Electron
 
 ## Where things live
 
-_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
+- `artifacts/alteesh-clinic/src/App.tsx` — routes, screens, local UI flows, and role presentation
+- `artifacts/alteesh-clinic/src/lib/repository.ts` — Dexie schema, repositories, validation, seed data, and local persistence
+- `artifacts/alteesh-clinic/src/index.css` — RTL visual system and responsive layout
+- `artifacts/alteesh-clinic/capacitor.config.ts` — Android wrapper configuration
+- `artifacts/alteesh-clinic/electron/main.ts` — Windows desktop wrapper
 
 ## Architecture decisions
 
-_Populate as you build — non-obvious choices a reader couldn't infer from the code (3-5 bullets)._
+- The clinic deliberately has no backend or login; IndexedDB is the source of truth so the same UI code can run in browser, Capacitor, and Electron.
+- Role switching is a presentation and data-shaping boundary: doctor mode never receives patient names, doctor identities, money, inventory, or settings in its view.
+- Appointment overlap validation lives in the repository and applies to one shared chair, regardless of which doctor is selected.
+- Seed records are marked with `isSeed` so users can remove only starter data.
 
 ## Product
 
-_Describe the high-level user-facing capabilities of this app once they exist._
+تشمل النسخة الحالية شاشة إعداد أولي، لوحة مدير، وضع طبيب معزول، المرضى وتفاصيلهم
+وخريطة 32 سنًا، المواعيد والفواتير التلقائية، خطط العلاج، المخزون والحركات،
+الإعدادات، PWA، وإعدادات Capacitor وElectron.
 
 ## User preferences
 
@@ -38,7 +52,8 @@ _Populate as you build — explicit user instructions worth remembering across s
 
 ## Gotchas
 
-_Populate as you build — sharp edges, "always run X before Y" rules._
+- تشغيل build يدويًا يحتاج `PORT` و`BASE_PATH`؛ استخدم workflow أو سكربتات التغليف الجاهزة.
+- إخراج EXE النهائي يحتاج Windows أو Wine؛ إعداد Electron نفسه موجود ويُبنى حتى مرحلة التغليف المحلي.
 
 ## Pointers
 

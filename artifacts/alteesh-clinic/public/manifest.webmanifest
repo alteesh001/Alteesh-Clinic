@@ -1,0 +1,11 @@
+{
+  "name": "عيادة ألتيش",
+  "short_name": "ألتيش",
+  "lang": "ar",
+  "dir": "rtl",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f6f1e7",
+  "theme_color": "#2d625e",
+  "description": "إدارة عيادة أسنان محلية تعمل دون اتصال."
+}

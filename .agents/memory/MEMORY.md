@@ -1,0 +1,2 @@
+- [Offline wrapper packaging](offline-packaging.md) — Android sync works in-workspace; Windows NSIS needs Windows or Wine to finish the installer.
+- [Workspace dependencies](workspace-dependencies.md) — restored workspaces may need pnpm install before Vite/API workflows or typechecks can run.

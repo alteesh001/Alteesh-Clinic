@@ -1,0 +1,14 @@
+appId: com.alteesh.clinic
+productName: Alteesh Clinic
+executableName: AlteeshClinic
+directories:
+  output: release
+files:
+  - dist/public/**
+  - dist-electron/**
+win:
+  target:
+    - nsis
+nsis:
+  oneClick: false
+  allowToChangeInstallationDirectory: true
