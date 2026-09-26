@@ -122,10 +122,16 @@ function normalizeBackup(value:unknown):ClinicBackup{
 }
 export async function importBackup(value:unknown):Promise<DBData>{
   const backup=normalizeBackup(value);
+  const localSettings=(await loadData()).settings;
+  const importedSettings={
+    ...backup.data.settings,
+    activeRole:localSettings.activeRole,
+    persistedStorage:localSettings.persistedStorage,
+  };
   await db.transaction('rw',Object.values(tables),async()=>{
     for(const store of stores)await tables[store].clear();
     for(const store of stores){
-      if(store==='settings')await tables.settings.put({...backup.data.settings,id:'settings'});
+      if(store==='settings')await tables.settings.put({...importedSettings,id:'settings'});
       else if(backup.data[store].length)await tables[store].bulkPut(backup.data[store] as any[]);
     }
   });
